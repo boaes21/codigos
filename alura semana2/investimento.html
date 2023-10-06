@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    function calcularOpcaoInvestimento(valor, periodo) {
+  let opcoesDisponiveis = [];
+
+  if (valor >= 1) {
+    opcoesDisponiveis.push("Start (1,2% ao mês) - Resgatável a qualquer momento");
+  }
+
+  if (valor >= 100) {
+    opcoesDisponiveis.push("Plus (1,78% ao mês) - Resgatável após 30 dias");
+  }
+
+  if (valor >= 500) {
+    let taxaMensal = periodo >= 12 ? 4.4 : 2.6;
+    opcoesDisponiveis.push(`Pro (${taxaMensal}% ao mês) - Resgatável após ${periodo} meses`);
+  }
+
+  return opcoesDisponiveis;
+}
+
+// Exemplo de uso
+const valorInvestimento = 200;  // Valor que o cliente deseja investir
+const periodoInvestimento = 12;  // Período de investimento em meses
+
+const opcoesInvestimento = calcularOpcaoInvestimento(valorInvestimento, periodoInvestimento);
+
+if (opcoesInvestimento.length > 0) {
+  console.log("Opções de investimento disponíveis:");
+  opcoesInvestimento.forEach(opcao => console.log(opcao));
+} else {
+  console.log("Desculpe, você não atende aos requisitos para nenhum dos investimentos disponíveis.");
+}
+
+
+    </script>
+</body>
+</html>
